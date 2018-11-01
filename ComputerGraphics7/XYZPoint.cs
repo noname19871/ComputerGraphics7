@@ -16,8 +16,8 @@ namespace ComputerGraphics7
         public double X { get { return coords[0]; } set { coords[0] = value; } }
         public double Y { get { return coords[1]; } set { coords[1] = value; } }
         public double Z { get { return coords[2]; } set { coords[2] = value; } }
-        public List<XYZPoint> Points { get { return points; } }
-        public List<Verge> Verges { get { return verges; } }
+        public List<XYZPoint> Points { get { return points; } set { points = value; } }
+        public List<Verge> Verges { get { return verges; } set { verges = value; } }
 
 
 
@@ -77,6 +77,11 @@ namespace ComputerGraphics7
             var x = (X + 1) / 2 * width;
             var y = (-Y + 1) / 2 * height;
             return new XYZPoint(x, y, Z);
+        }
+
+        override public string ToString()
+        {
+            return "Point";
         }
     }
 }

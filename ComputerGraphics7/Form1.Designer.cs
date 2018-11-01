@@ -454,6 +454,7 @@
             this.LoadButton.TabIndex = 44;
             this.LoadButton.Text = "Загрузить";
             this.LoadButton.UseVisualStyleBackColor = true;
+            this.LoadButton.Click += new System.EventHandler(this.LoadButton_Click);
             // 
             // Form1
             // 

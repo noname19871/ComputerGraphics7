@@ -16,7 +16,7 @@ namespace ComputerGraphics7
 
         public List<XYZPoint> Points { get { return points; } set { points = value; } }
 
-        public List<Verge> Verges { get { return verges; } }
+        public List<Verge> Verges { get { return verges; } set { verges = value; } }
 
         public Verge() { }
 
@@ -49,6 +49,11 @@ namespace ComputerGraphics7
                 }
                 (new XYZLine(Points[Points.Count - 1], Points[0])).Draw(g, projection, width, height);
             }
+        }
+
+        override public string ToString()
+        {
+            return "Verge";
         }
     }
 }

@@ -16,8 +16,8 @@ namespace ComputerGraphics7
 
         public XYZPoint A { get { return a; } set { a = value; } }
         public XYZPoint B { get { return b; } set { b = value; } }
-        public List<XYZPoint> Points { get { return points; } }
-        public List<Verge> Verges { get { return verges; } }
+        public List<XYZPoint> Points { get { return points; } set { points = value; } }
+        public List<Verge> Verges { get { return verges; } set { verges = value; } }
 
         public XYZLine(XYZPoint a, XYZPoint b)
         {
@@ -36,6 +36,11 @@ namespace ComputerGraphics7
             var c = A.Transform(projection).NormalizedToDisplay(width, height);
             var d = B.Transform(projection).NormalizedToDisplay(width, height);
             g.DrawLine(Pens.Black, (float)c.X, (float)c.Y, (float)d.X, (float)d.Y);
+        }
+
+        override public string ToString()
+        {
+            return "Line";
         }
     }
 }

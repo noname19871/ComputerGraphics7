@@ -14,8 +14,8 @@ namespace ComputerGraphics7
 
         private List<Verge> verges = new List<Verge>();
 
-        public List<XYZPoint> Points { get { return points; } }
-        public List<Verge> Verges { get { return verges; } }
+        public List<XYZPoint> Points { get { return points; } set { points = value; } }
+        public List<Verge> Verges { get { return verges; } set { verges = value; } }
 
         public XYZPoint Center
         {
@@ -65,6 +65,11 @@ namespace ComputerGraphics7
         {
             foreach (var Verge in Verges)
                 Verge.Draw(g, projection, width, height);
+        }
+
+        override public string ToString()
+        {
+            return "Tetrahedron";
         }
     }
 }

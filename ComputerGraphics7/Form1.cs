@@ -226,12 +226,12 @@ namespace ComputerGraphics7
             {
                 try
                 {
-                    string info = "# Date: " + DateTime.Now.ToString() + "\r\n" + "\r\n";
+                    string info = cur_primitive.ToString() + "\r\n" + "\r\n";
 
                     int num = 1;
                     foreach (XYZPoint point in cur_primitive.Points)
                     {
-                        info += "point #" + num;
+                        info += point.ToString() + " #" + num;
                         info += "\r\n";
                         info += point.X + " ";
                         info += point.Y + " ";
@@ -239,14 +239,14 @@ namespace ComputerGraphics7
                         info += "\r\n";
                         ++num;
                     }
-                    info += "# " + cur_primitive.Points.Count + " vertices\r\n";
+                    info += "# " + cur_primitive.Points.Count + " points\r\n";
                     info += "\r\n";
 
 
                     num = 1;
                     foreach (Verge v in cur_primitive.Verges)
                     {
-                        info += "verge #" + num;
+                        info += v.ToString() + " #" + num;
 
                         info += "\r\n";
                         for (int i = 0; i < v.Points.Count; ++i)
@@ -267,6 +267,108 @@ namespace ComputerGraphics7
                     DialogResult rezult = MessageBox.Show("Невозможно сохранить файл",
                     "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void LoadButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog loadDialog = new OpenFileDialog();
+            loadDialog.Filter = "Object Files(*.obj)|*.obj|Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            if (loadDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    Clear();
+                    List<XYZPoint> points = new List<XYZPoint>();
+                    List<Verge> verges = new List<Verge>();
+
+                    string str = System.IO.File.ReadAllText(loadDialog.FileName).Replace("\r\n", "!");
+                    string[] info = str.Split('!');
+
+                    string type_of_primitive = info[0];
+
+                    int cur_string = 3;
+                    while (cur_string < info.Length && info[cur_string] != "")
+                    {
+                        string[] coordinates = info[cur_string].Split(' ');
+
+                        double x = double.Parse(coordinates[0]);
+                        double y = double.Parse(coordinates[1]);
+                        double z = double.Parse(coordinates[2]);
+                        points.Add(new XYZPoint(x, y, z));
+                        cur_string += 2;
+                    }
+
+                    cur_string++;
+                    do
+                    {
+                        cur_string++;
+                        if (info[cur_string] == "")
+                            break;
+
+                        List<XYZPoint> vertices = new List<XYZPoint>();
+                        for (int i = 0; i < 3; ++i)
+                        {
+                            string[] coordinates = info[cur_string].Split(' ');
+
+                            double x = double.Parse(coordinates[0]);
+                            double y = double.Parse(coordinates[1]);
+                            double z = double.Parse(coordinates[2]);
+                            vertices.Add(new XYZPoint(x, y, z));
+                            cur_string++;
+                        }
+
+                        verges.Add(new Verge(vertices));
+                        cur_string++;
+                    }
+                    while (cur_string < info.Length - 1);
+
+                    switch (type_of_primitive)
+                    {
+                        case "Tetrahedron":
+                            {
+                                cur_primitive = new Tetrahedron(0.5);
+                                cur_primitive.Points = points;
+                                cur_primitive.Verges = verges;
+                                break;
+                            }
+                        case "Octahedron":
+                            {
+                                cur_primitive = new Octahedron(0.5);
+                                cur_primitive.Points = points;
+                                cur_primitive.Verges = verges;
+                                break;
+                            }
+                        case "Hexahedron":
+                            {
+                                cur_primitive = new Hexahedron(0.5);
+                                cur_primitive.Points = points;
+                                cur_primitive.Verges = verges;
+                                break;
+                            }
+                        case "Icosahedron":
+                            {
+                                cur_primitive = new Icosahedron(0.5);
+                                cur_primitive.Points = points;
+                                cur_primitive.Verges = verges;
+                                break;
+                            }
+                        default:
+                            {
+                                cur_primitive = new Tetrahedron(0.5);
+                                break;
+                            }
+                    }
+
+                    DrawAxis(perspective_g, get_perpective_transform(), PerspectiveBox.Width, PerspectiveBox.Height);
+                    DrawAxis(orthographic_g, get_orthographic_transform(), OrthographicBox.Width, OrthographicBox.Height);
+                }
+                catch
+                {
+                    DialogResult rezult = MessageBox.Show("Невозможно открыть выбранный файл",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
     }

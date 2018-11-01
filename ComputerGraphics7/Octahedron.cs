@@ -15,11 +15,10 @@ namespace ComputerGraphics7
 		// кол-во граней = 8
 		private List<Verge> verges = new List<Verge>();
 
-		public List<XYZPoint> Points { get { return points; } }
+        public List<XYZPoint> Points { get { return points; } set { points = value; } }
+        public List<Verge> Verges { get { return verges; } set { verges = value; } }
 
-		public List<Verge> Verges { get { return verges; } }
-
-		public XYZPoint Center
+        public XYZPoint Center
 		{
 			get
 			{
@@ -73,5 +72,10 @@ namespace ComputerGraphics7
 			foreach (var Verge in Verges)
 				Verge.Draw(g, projection, width, height);
 		}
-	}
+
+        override public string ToString()
+        {
+            return "Octahedron";
+        }
+    }
 }
