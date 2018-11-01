@@ -54,6 +54,21 @@
             this.PrimitiveComboBox = new System.Windows.Forms.ComboBox();
             this.SaveButton = new System.Windows.Forms.Button();
             this.LoadButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numericUpDown10 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown11 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown12 = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.AddPoint = new System.Windows.Forms.Button();
+            this.AxisComboBox = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.numericUpDown13 = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
+            this.ApplyRotationFigure = new System.Windows.Forms.Button();
+            this.RemoveButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PerspectiveBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrthographicBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
@@ -65,6 +80,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).BeginInit();
             this.SuspendLayout();
             // 
             // PerspectiveBox
@@ -152,7 +171,7 @@
             // 
             this.ApplyAffin.Location = new System.Drawing.Point(1062, 231);
             this.ApplyAffin.Name = "ApplyAffin";
-            this.ApplyAffin.Size = new System.Drawing.Size(190, 38);
+            this.ApplyAffin.Size = new System.Drawing.Size(190, 29);
             this.ApplyAffin.TabIndex = 42;
             this.ApplyAffin.Text = "Применить";
             this.ApplyAffin.UseVisualStyleBackColor = true;
@@ -438,9 +457,9 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(1062, 275);
+            this.SaveButton.Location = new System.Drawing.Point(1062, 266);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(190, 38);
+            this.SaveButton.Size = new System.Drawing.Size(190, 29);
             this.SaveButton.TabIndex = 43;
             this.SaveButton.Text = "Сохранить";
             this.SaveButton.UseVisualStyleBackColor = true;
@@ -448,19 +467,240 @@
             // 
             // LoadButton
             // 
-            this.LoadButton.Location = new System.Drawing.Point(1062, 319);
+            this.LoadButton.Location = new System.Drawing.Point(1062, 301);
             this.LoadButton.Name = "LoadButton";
-            this.LoadButton.Size = new System.Drawing.Size(190, 38);
+            this.LoadButton.Size = new System.Drawing.Size(190, 29);
             this.LoadButton.TabIndex = 44;
             this.LoadButton.Text = "Загрузить";
             this.LoadButton.UseVisualStyleBackColor = true;
             this.LoadButton.Click += new System.EventHandler(this.LoadButton_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1060, 333);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(129, 19);
+            this.label1.TabIndex = 45;
+            this.label1.Text = "Фигура вращения";
+            // 
+            // numericUpDown10
+            // 
+            this.numericUpDown10.DecimalPlaces = 1;
+            this.numericUpDown10.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDown10.Location = new System.Drawing.Point(1064, 403);
+            this.numericUpDown10.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown10.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown10.Name = "numericUpDown10";
+            this.numericUpDown10.Size = new System.Drawing.Size(54, 26);
+            this.numericUpDown10.TabIndex = 48;
+            this.numericUpDown10.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown11
+            // 
+            this.numericUpDown11.DecimalPlaces = 1;
+            this.numericUpDown11.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDown11.Location = new System.Drawing.Point(1124, 403);
+            this.numericUpDown11.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown11.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown11.Name = "numericUpDown11";
+            this.numericUpDown11.Size = new System.Drawing.Size(56, 26);
+            this.numericUpDown11.TabIndex = 47;
+            this.numericUpDown11.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown12
+            // 
+            this.numericUpDown12.DecimalPlaces = 1;
+            this.numericUpDown12.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDown12.Location = new System.Drawing.Point(1186, 403);
+            this.numericUpDown12.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown12.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown12.Name = "numericUpDown12";
+            this.numericUpDown12.Size = new System.Drawing.Size(56, 26);
+            this.numericUpDown12.TabIndex = 46;
+            this.numericUpDown12.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(1200, 113);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(18, 19);
+            this.label3.TabIndex = 51;
+            this.label3.Text = "Z";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1141, 113);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(20, 19);
+            this.label2.TabIndex = 50;
+            this.label2.Text = "Y";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(1076, 113);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(20, 19);
+            this.label7.TabIndex = 49;
+            this.label7.Text = "X";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 19;
+            this.listBox1.Location = new System.Drawing.Point(1062, 355);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(190, 42);
+            this.listBox1.TabIndex = 52;
+            // 
+            // AddPoint
+            // 
+            this.AddPoint.Location = new System.Drawing.Point(1062, 435);
+            this.AddPoint.Name = "AddPoint";
+            this.AddPoint.Size = new System.Drawing.Size(92, 29);
+            this.AddPoint.TabIndex = 53;
+            this.AddPoint.Text = "Добавить";
+            this.AddPoint.UseVisualStyleBackColor = true;
+            this.AddPoint.Click += new System.EventHandler(this.AddPoint_Click);
+            // 
+            // AxisComboBox
+            // 
+            this.AxisComboBox.FormattingEnabled = true;
+            this.AxisComboBox.Items.AddRange(new object[] {
+            "OX",
+            "OY",
+            "OZ"});
+            this.AxisComboBox.Location = new System.Drawing.Point(1062, 502);
+            this.AxisComboBox.Name = "AxisComboBox";
+            this.AxisComboBox.Size = new System.Drawing.Size(190, 27);
+            this.AxisComboBox.TabIndex = 55;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(976, 477);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(80, 19);
+            this.label9.TabIndex = 57;
+            this.label9.Text = "Разбиение";
+            // 
+            // numericUpDown13
+            // 
+            this.numericUpDown13.Location = new System.Drawing.Point(1062, 470);
+            this.numericUpDown13.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.numericUpDown13.Name = "numericUpDown13";
+            this.numericUpDown13.Size = new System.Drawing.Size(190, 26);
+            this.numericUpDown13.TabIndex = 58;
+            this.numericUpDown13.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(976, 510);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(35, 19);
+            this.label10.TabIndex = 59;
+            this.label10.Text = "Ось";
+            // 
+            // ApplyRotationFigure
+            // 
+            this.ApplyRotationFigure.Location = new System.Drawing.Point(1062, 541);
+            this.ApplyRotationFigure.Name = "ApplyRotationFigure";
+            this.ApplyRotationFigure.Size = new System.Drawing.Size(190, 29);
+            this.ApplyRotationFigure.TabIndex = 60;
+            this.ApplyRotationFigure.Text = "Применить";
+            this.ApplyRotationFigure.UseVisualStyleBackColor = true;
+            this.ApplyRotationFigure.Click += new System.EventHandler(this.ApplyRotationFigure_Click);
+            // 
+            // RemoveButton
+            // 
+            this.RemoveButton.Location = new System.Drawing.Point(1160, 435);
+            this.RemoveButton.Name = "RemoveButton";
+            this.RemoveButton.Size = new System.Drawing.Size(92, 29);
+            this.RemoveButton.TabIndex = 61;
+            this.RemoveButton.Text = "Убрать";
+            this.RemoveButton.UseVisualStyleBackColor = true;
+            this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.RemoveButton);
+            this.Controls.Add(this.ApplyRotationFigure);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.numericUpDown13);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.AxisComboBox);
+            this.Controls.Add(this.AddPoint);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.numericUpDown10);
+            this.Controls.Add(this.numericUpDown11);
+            this.Controls.Add(this.numericUpDown12);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.LoadButton);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.ApplyAffin);
@@ -504,6 +744,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -537,6 +781,21 @@
         private System.Windows.Forms.ComboBox PrimitiveComboBox;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button LoadButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown numericUpDown10;
+        private System.Windows.Forms.NumericUpDown numericUpDown11;
+        private System.Windows.Forms.NumericUpDown numericUpDown12;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button AddPoint;
+        private System.Windows.Forms.ComboBox AxisComboBox;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown numericUpDown13;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button ApplyRotationFigure;
+        private System.Windows.Forms.Button RemoveButton;
     }
 }
 

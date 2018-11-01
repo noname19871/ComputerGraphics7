@@ -149,6 +149,7 @@ namespace ComputerGraphics7
             PerspectiveComboBox.SelectedItem = PerspectiveComboBox.Items[1];
             OrthographicComboBox.SelectedItem = OrthographicComboBox.Items[0];
             PrimitiveComboBox.SelectedItem = PrimitiveComboBox.Items[0];
+            AxisComboBox.SelectedItem = AxisComboBox.Items[0];
 
             GetPrimitive();
             DrawAxis(perspective_g, get_perpective_transform(), PerspectiveBox.Width, PerspectiveBox.Height);
@@ -231,7 +232,7 @@ namespace ComputerGraphics7
                     int num = 1;
                     foreach (XYZPoint point in cur_primitive.Points)
                     {
-                        info += point.ToString() + " #" + num;
+                        info += "Point #" + num;
                         info += "\r\n";
                         info += point.X + " ";
                         info += point.Y + " ";
@@ -307,7 +308,7 @@ namespace ComputerGraphics7
                             break;
 
                         List<XYZPoint> vertices = new List<XYZPoint>();
-                        for (int i = 0; i < 3; ++i)
+                        while (cur_string < info.Length - 1 && info[cur_string] != "" && info[cur_string][0] != '#')
                         {
                             string[] coordinates = info[cur_string].Split(' ');
 
@@ -353,6 +354,13 @@ namespace ComputerGraphics7
                                 cur_primitive.Verges = verges;
                                 break;
                             }
+                        case "Rotation Figure":
+                            {
+                                cur_primitive = new RotationFigure();
+                                cur_primitive.Points = points;
+                                cur_primitive.Verges = verges;
+                                break;
+                            }
                         default:
                             {
                                 cur_primitive = new Tetrahedron(0.5);
@@ -370,6 +378,61 @@ namespace ComputerGraphics7
                 }
 
             }
+        }
+
+        private void AddPoint_Click(object sender, EventArgs e)
+        {
+            double x = (double)numericUpDown10.Value;
+            double y = (double)numericUpDown11.Value;
+            double z = (double)numericUpDown12.Value;
+            numericUpDown10.Value = 0;
+            numericUpDown11.Value = 0;
+            numericUpDown12.Value = 0;
+            listBox1.Items.Add(new XYZPoint(x, y, z));
+        }
+
+        private void RemoveButton_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex == -1)
+                return;
+            listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+        }
+
+        private void ApplyRotationFigure_Click(object sender, EventArgs e)
+        {
+            Clear();
+            List<XYZPoint> points = new List<XYZPoint>();
+
+            foreach (var p in listBox1.Items)
+                points.Add((XYZPoint)p);
+            int axis = 0;
+            switch (AxisComboBox.SelectedItem.ToString())
+            {
+                case "OX":
+                    {
+                        axis = 0;
+                        break;
+                    }
+                case "OY":
+                    {
+                        axis = 1;
+                        break;
+                    }
+                case "OZ":
+                    {
+                        axis = 2;
+                        break;
+                    }
+                default:
+                    {
+                        axis = 0;
+                        break;
+                    }
+            }
+            var density = (int)numericUpDown13.Value;
+            cur_primitive = new RotationFigure(points, axis, density);
+            DrawAxis(perspective_g, get_perpective_transform(), PerspectiveBox.Width, PerspectiveBox.Height);
+            DrawAxis(orthographic_g, get_orthographic_transform(), OrthographicBox.Width, OrthographicBox.Height);
         }
     }
 }

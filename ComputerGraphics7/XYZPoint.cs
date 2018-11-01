@@ -81,7 +81,7 @@ namespace ComputerGraphics7
 
         override public string ToString()
         {
-            return "Point";
+            return (X + ", " + Y + ", " + Z);
         }
     }
 }
