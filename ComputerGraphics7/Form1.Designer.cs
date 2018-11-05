@@ -449,7 +449,8 @@
             "Тетраэдр",
             "Гексаэдр",
             "Октаэдр",
-            "Икосаэдр"});
+            "Икосаэдр",
+            "График"});
             this.PrimitiveComboBox.Location = new System.Drawing.Point(1062, 39);
             this.PrimitiveComboBox.Name = "PrimitiveComboBox";
             this.PrimitiveComboBox.Size = new System.Drawing.Size(190, 27);

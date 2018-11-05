@@ -55,6 +55,7 @@
     <Compile Include="Hexahedron.cs" />
     <Compile Include="Icosahedron.cs" />
     <Compile Include="Octahedron.cs" />
+    <Compile Include="Plot.cs" />
     <Compile Include="Primitive.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

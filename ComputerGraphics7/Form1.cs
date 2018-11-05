@@ -113,6 +113,11 @@ namespace ComputerGraphics7
                         cur_primitive = new Icosahedron(0.5);
                         break;
                     }
+                case "График":
+                    {
+                        cur_primitive = new Plot();
+                        break;
+                    }
                 default:
                     {
                         cur_primitive = new Tetrahedron(0.5);
@@ -357,6 +362,13 @@ namespace ComputerGraphics7
                         case "Rotation Figure":
                             {
                                 cur_primitive = new RotationFigure();
+                                cur_primitive.Points = points;
+                                cur_primitive.Verges = verges;
+                                break;
+                            }
+                        case "Plot":
+                            {
+                                cur_primitive = new Plot();
                                 cur_primitive.Points = points;
                                 cur_primitive.Verges = verges;
                                 break;
