@@ -15,8 +15,25 @@ namespace ComputerGraphics7
         // кол-во граней = 20
         private List<Verge> verges = new List<Verge>();
 
-        public List<XYZPoint> Points { get { return points; } set { points = value; } }
-        public List<Verge> Verges { get { return verges; } set { verges = value; } }
+        public List<XYZPoint> Points { get { return points; } }
+        public List<Verge> Verges { get { return verges; } }
+
+        public Icosahedron(List<XYZPoint> p)
+        {
+            points = p;
+            verges = new List<Verge>();
+
+            for (int i = 0; i < 10; ++i)
+                verges.Add(new Verge(new List<XYZPoint> { points[i], points[(i + 1) % 10], points[(i + 2) % 10] }));
+
+            for (int i = 0; i < 5; ++i)
+            {
+                // верхняя часть
+                verges.Add(new Verge(new List<XYZPoint> { points[2 * i], points[10], points[(2 * (i + 1)) % 10] }));
+                // нижняя часть
+                verges.Add(new Verge(new List<XYZPoint> { points[2 * i + 1], points[11], points[(2 * (i + 1) + 1) % 10] }));
+            }
+        }
 
         public XYZPoint Center
         {
@@ -63,14 +80,14 @@ namespace ComputerGraphics7
 
             // середина
             for (int i = 0; i < 10; ++i)
-                Verges.Add(new Verge(new List<XYZPoint> { points[i], points[(i + 1) % 10], points[(i + 2) % 10] }));
+                verges.Add(new Verge(new List<XYZPoint> { points[i], points[(i + 1) % 10], points[(i + 2) % 10] }));
 
             for (int i = 0; i < 5; ++i)
             {
                 // верхняя часть
-                Verges.Add(new Verge(new List<XYZPoint> { points[2 * i], points[10], points[(2 * (i + 1)) % 10] }));
+                verges.Add(new Verge(new List<XYZPoint> { points[2 * i], points[10], points[(2 * (i + 1)) % 10] }));
                 // нижняя часть
-                Verges.Add(new Verge(new List<XYZPoint> { points[2 * i + 1], points[11], points[(2 * (i + 1) + 1) % 10] }));
+                verges.Add(new Verge(new List<XYZPoint> { points[2 * i + 1], points[11], points[(2 * (i + 1) + 1) % 10] }));
             }
         }
 

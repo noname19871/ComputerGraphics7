@@ -15,8 +15,21 @@ namespace ComputerGraphics7
 		// кол-во граней = 6
 		private List<Verge> verges = new List<Verge>();
 
-        public List<XYZPoint> Points { get { return points; } set { points = value; } }
-        public List<Verge> Verges { get { return verges; } set { verges = value; } }
+        public List<XYZPoint> Points { get { return points; } }
+        public List<Verge> Verges { get { return verges; } }
+
+        public Hexahedron(List<XYZPoint> p)
+        {
+            points = p;
+            verges = new List<Verge>();
+
+            verges.Add(new Verge(new List<XYZPoint> { points[0], points[1], points[5], points[3] }));
+            verges.Add(new Verge(new List<XYZPoint> { points[2], points[6], points[3], points[0] }));
+            verges.Add(new Verge(new List<XYZPoint> { points[4], points[1], points[0], points[2] }));
+            verges.Add(new Verge(new List<XYZPoint> { points[7], points[5], points[3], points[6] }));
+            verges.Add(new Verge(new List<XYZPoint> { points[2], points[4], points[7], points[6] }));
+            verges.Add(new Verge(new List<XYZPoint> { points[4], points[1], points[5], points[7] }));
+        }
 
         public XYZPoint Center
 		{
@@ -49,12 +62,12 @@ namespace ComputerGraphics7
 			points.Add(new XYZPoint(size / 2, size / 2, -size / 2));
 			points.Add(new XYZPoint(size / 2, size / 2, size / 2));
 
-			Verges.Add(new Verge(new List<XYZPoint> { points[0], points[1], points[5], points[3] }));
-			Verges.Add(new Verge(new List<XYZPoint> { points[2], points[6], points[3], points[0] }));
-			Verges.Add(new Verge(new List<XYZPoint> { points[4], points[1], points[0], points[2] }));
-			Verges.Add(new Verge(new List<XYZPoint> { points[7], points[5], points[3], points[6] }));
-			Verges.Add(new Verge(new List<XYZPoint> { points[2], points[4], points[7], points[6] }));
-			Verges.Add(new Verge(new List<XYZPoint> { points[4], points[1], points[5], points[7] }));
+			verges.Add(new Verge(new List<XYZPoint> { points[0], points[1], points[5], points[3] }));
+			verges.Add(new Verge(new List<XYZPoint> { points[2], points[6], points[3], points[0] }));
+			verges.Add(new Verge(new List<XYZPoint> { points[4], points[1], points[0], points[2] }));
+			verges.Add(new Verge(new List<XYZPoint> { points[7], points[5], points[3], points[6] }));
+			verges.Add(new Verge(new List<XYZPoint> { points[2], points[4], points[7], points[6] }));
+			verges.Add(new Verge(new List<XYZPoint> { points[4], points[1], points[5], points[7] }));
 
 		}
 

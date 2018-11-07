@@ -20,6 +20,8 @@ namespace ComputerGraphics7
 
         private Primitive cur_primitive;
 
+        private int count_start_points_in_rotation_figure;
+
 
         private Transform get_perpective_transform()
         {
@@ -232,7 +234,16 @@ namespace ComputerGraphics7
             {
                 try
                 {
-                    string info = cur_primitive.ToString() + "\r\n" + "\r\n";
+                    string info = "";
+                    if (cur_primitive.ToString() == "Rotation Figure")
+                    {
+                        info += cur_primitive.ToString() + " " + count_start_points_in_rotation_figure +  "\r\n" + "\r\n";
+                    }
+                    else
+                    {
+                        info += cur_primitive.ToString() + "\r\n" + "\r\n";
+                    }
+
 
                     int num = 1;
                     foreach (XYZPoint point in cur_primitive.Points)
@@ -247,7 +258,6 @@ namespace ComputerGraphics7
                     }
                     info += "# " + cur_primitive.Points.Count + " points\r\n";
                     info += "\r\n";
-
 
                     num = 1;
                     foreach (Verge v in cur_primitive.Verges)
@@ -292,6 +302,12 @@ namespace ComputerGraphics7
                     string[] info = str.Split('!');
 
                     string type_of_primitive = info[0];
+                    if (type_of_primitive.Contains("Rotation Figure"))
+                    {
+                        string[] tmp = type_of_primitive.Split(' ');
+                        type_of_primitive = tmp[0] + " " + tmp[1];
+                        count_start_points_in_rotation_figure = int.Parse(tmp[2]);
+                    }
 
                     int cur_string = 3;
                     while (cur_string < info.Length && info[cur_string] != "")
@@ -333,49 +349,37 @@ namespace ComputerGraphics7
                     {
                         case "Tetrahedron":
                             {
-                                cur_primitive = new Tetrahedron(0.5);
-                                cur_primitive.Points = points;
-                                cur_primitive.Verges = verges;
+                                cur_primitive = new Tetrahedron(points);
                                 break;
                             }
                         case "Octahedron":
                             {
-                                cur_primitive = new Octahedron(0.5);
-                                cur_primitive.Points = points;
-                                cur_primitive.Verges = verges;
+                                cur_primitive = new Octahedron(points);
                                 break;
                             }
                         case "Hexahedron":
                             {
-                                cur_primitive = new Hexahedron(0.5);
-                                cur_primitive.Points = points;
-                                cur_primitive.Verges = verges;
+                                cur_primitive = new Hexahedron(points);
                                 break;
                             }
                         case "Icosahedron":
                             {
-                                cur_primitive = new Icosahedron(0.5);
-                                cur_primitive.Points = points;
-                                cur_primitive.Verges = verges;
+                                cur_primitive = new Icosahedron(points);
                                 break;
                             }
                         case "Rotation Figure":
                             {
-                                cur_primitive = new RotationFigure();
-                                cur_primitive.Points = points;
-                                cur_primitive.Verges = verges;
+                                cur_primitive = new RotationFigure(points, verges,count_start_points_in_rotation_figure);
                                 break;
                             }
                         case "Plot":
                             {
-                                cur_primitive = new Plot();
-                                cur_primitive.Points = points;
-                                cur_primitive.Verges = verges;
+                                cur_primitive = new Plot(points);
                                 break;
                             }
                         default:
                             {
-                                cur_primitive = new Tetrahedron(0.5);
+                                cur_primitive = new Tetrahedron(points);
                                 break;
                             }
                     }
@@ -418,6 +422,7 @@ namespace ComputerGraphics7
             foreach (var p in listBox1.Items)
                 points.Add((XYZPoint)p);
             int axis = 0;
+            count_start_points_in_rotation_figure = points.Count;
             switch (AxisComboBox.SelectedItem.ToString())
             {
                 case "OX":

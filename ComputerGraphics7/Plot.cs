@@ -14,15 +14,32 @@ namespace ComputerGraphics7
 
         private IList<XYZLine> lines = new List<XYZLine>();
 
-        public List<XYZPoint> Points { get { return points; } set { points = value; } }
+        public List<XYZPoint> Points { get { return points; } }
 
-        public List<Verge> Verges { get { return verges; } set { verges = value; } }
+        public List<Verge> Verges { get { return verges; } }
 
         public IList<XYZLine> Lines { get { return lines; } }
 
         private double F(double x, double y)
         {
-            return (x * x * y) / (x * x * x * x + y * y);
+            return (x * x * y) / ((x * x * x * x + y * y) - 0.01);
+        }
+
+        public Plot(List<XYZPoint> p)
+        {
+            points.Add(p[0]);
+            int cur = 1;
+            lines = new List<XYZLine>();
+            for (double i = 0.1; i < 1; i += 0.03)
+                for (double j = 0.1; j < 1; j += 0.03)
+                {
+                    points.Add(p[cur]);
+                    cur++;
+                    if (j > 0.1)
+                    {
+                        lines.Add(new XYZLine(points[points.Count - 2], points[points.Count - 1]));
+                    }
+                }
         }
 
         public XYZPoint Center
@@ -44,13 +61,16 @@ namespace ComputerGraphics7
                 for (double j = 0.1; j < 1; j += 0.03)
                 {
                     points.Add(new XYZPoint(i, j, F(i, j)));
-                    lines.Add(new XYZLine(points[points.Count - 2], points[points.Count - 1]));
+                    if (j > 0.1)
+                    {
+                        lines.Add(new XYZLine(points[points.Count - 2], points[points.Count - 1]));
+                    }
                 }
         }
 
         public void Apply(Transform t)
         {
-            foreach (var point in Lines)
+            foreach (var point in Points)
                 point.Apply(t);
         }
 

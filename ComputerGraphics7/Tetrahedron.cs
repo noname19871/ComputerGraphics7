@@ -14,8 +14,22 @@ namespace ComputerGraphics7
 
         private List<Verge> verges = new List<Verge>();
 
-        public List<XYZPoint> Points { get { return points; } set { points = value; } }
-        public List<Verge> Verges { get { return verges; } set { verges = value; } }
+        public List<XYZPoint> Points { get { return points; } }
+        public List<Verge> Verges { get { return verges; } }
+
+        public Tetrahedron(List<XYZPoint> p)
+        {
+            points = p;
+            verges = new List<Verge>();
+            // Основание тетраэдра
+            verges.Add(new Verge(new List<XYZPoint> { points[0], points[1], points[2] }));
+            // Левая грань
+            verges.Add(new Verge(new List<XYZPoint> { points[1], points[3], points[0] }));
+            // Правая грань
+            verges.Add(new Verge(new List<XYZPoint> { points[2], points[3], points[1] }));
+            // Передняя грань
+            verges.Add(new Verge(new List<XYZPoint> { points[0], points[3], points[2] }));
+        }
 
         public XYZPoint Center
         {
@@ -46,13 +60,13 @@ namespace ComputerGraphics7
             points.Add(new XYZPoint(0, h, 0));
 
             // Основание тетраэдра
-            Verges.Add(new Verge(new List<XYZPoint> { points[0], points[1], points[2] }));
+            verges.Add(new Verge(new List<XYZPoint> { points[0], points[1], points[2] }));
             // Левая грань
-            Verges.Add(new Verge(new List<XYZPoint> { points[1], points[3], points[0] }));
+            verges.Add(new Verge(new List<XYZPoint> { points[1], points[3], points[0] }));
             // Правая грань
-            Verges.Add(new Verge(new List<XYZPoint> { points[2], points[3], points[1] }));
+            verges.Add(new Verge(new List<XYZPoint> { points[2], points[3], points[1] }));
             // Передняя грань
-            Verges.Add(new Verge(new List<XYZPoint> { points[0], points[3], points[2] }));
+            verges.Add(new Verge(new List<XYZPoint> { points[0], points[3], points[2] }));
         }
 
         public void Apply(Transform t)

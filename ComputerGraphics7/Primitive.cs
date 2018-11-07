@@ -5,9 +5,9 @@ namespace ComputerGraphics7
 {
     interface Primitive
     {
-        List<XYZPoint> Points { get; set; }
+        List<XYZPoint> Points { get; }
 
-        List<Verge> Verges { get; set; }
+        List<Verge> Verges { get; }
 
         void Draw(Graphics g, Transform projection, int width, int height);
 
